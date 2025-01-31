@@ -2,10 +2,10 @@
 // require_once "../Model/Cursos.php";
 require_once "../Controller/CursosController.php";
 
-$cursos = new CursosController();
+$aCourses = new CursosController();
 
-$teste = $cursos->index();
-// var_dump($teste);
+$courses = $aCourses->getCursos();
+// var_dump($courses);
 
 ?>
 <!DOCTYPE html>
@@ -15,6 +15,7 @@ $teste = $cursos->index();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio Revvo - PHP</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Public/CSS/style.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -24,7 +25,13 @@ $teste = $cursos->index();
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Pesquisar cursos..." aria-label="Search">
                 <div class="dropdown">
-                    <a class="btn btn-outline-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a 
+                        class="btn btn-outline-secondary dropdown-toggle" 
+                        href="#" 
+                        role="button" 
+                        data-bs-toggle="dropdown" 
+                        aria-expanded="false"
+                    >
                         <img src="https://picsum.photo/50" alt="Profile" class="rounded-circle"> John Doe
                     </a>
                     <ul class="dropdown-menu">
@@ -63,49 +70,42 @@ $teste = $cursos->index();
         <h3 class="mb-4">Meus Cursos</h3>
         <div class="row g-4">
             <!-- Course Card -->
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="https://picsum.photos/250/150" class="card-img-top" alt="Curso">
-                    <div class="card-body">
-                        <h5 class="card-title">PELLENTESQUE MALESUADA</h5>
-                        <p class="card-text">Cras blandit tempus porttitor. Nulla vitae elit libero.</p>
-                        <a href="#" class="btn btn-success">Ver Curso</a>
+            <?php foreach ($courses as $course) { ?>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="<?= $course['image'] ?>" class="img-fluid" alt="Curso" alt="Curso" >
+                        <div class="card-body">
+                            <h5 class="card-title"> <?= $course['title'] ?> </h5>
+                            <p class="card-text"> <?= $course['description'] ?> </p>
+                            <a href="<?= $course['url_video'] ?>" class="btn btn-success"> Ver Curso </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Repeat the card for each course -->
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="https://picsum.photos/250/150" class="card-img-top" alt="Curso">
-                    <div class="card-body">
-                        <h5 class="card-title">PELLENTESQUE MALESUADA</h5>
-                        <p class="card-text">Cras blandit tempus porttitor. Nulla vitae elit libero.</p>
-                        <a href="#" class="btn btn-success">Ver Curso</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Add More Cards -->
-            <div class="col-md-3">
-                <div class="card">
-                    <img src="https://picsum.photos/250/150" class="card-img-top" alt="Curso">
-                    <div class="card-body">
-                        <h5 class="card-title">PELLENTESQUE MALESUADA</h5>
-                        <p class="card-text">Cras blandit tempus porttitor. Nulla vitae elit libero.</p>
-                        <a href="#" class="btn btn-success">Ver Curso</a>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
+
             <!-- Add Course Button -->
             <div class="col-md-3 d-flex justify-content-center align-items-center">
                 <div class="card border-dashed" style="text-align: center; border: 2px dashed #ddd;">
                     <div class="card-body">
                         <i class="bi bi-plus-circle" style="font-size: 2rem; color: #888;"></i>
-                        <h5 class="card-title">Adicionar Curso</h5>
+                        <h5 
+                            class="card-title" 
+                            style="cursor: pointer;" 
+                            class="btn btn-primary" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#exampleModal" 
+                            data-bs-whatever="@mdo"
+                        >
+                            Adicionar Curso
+                        </h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Add Course Modal -->
+     <?php include_once "modalCourses.html"; ?>
 
     <!-- Footer -->
     <footer class="bg-light text-center py-4">
@@ -121,6 +121,7 @@ $teste = $cursos->index();
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../Public/JavaScript/NewCourses.js"></script>
 </body>
 </html>

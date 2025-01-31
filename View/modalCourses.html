@@ -1,0 +1,43 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Novo Curso</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="course-form" action="../Controller/CursosController.php?action=create" method="POST"
+                    enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="title" class="col-form-label">Título <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="title" name="title" required maxlength="100">
+                        <div class="invalid-feedback">O campo Título é obrigatório.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Descrição <span
+                                class="text-danger">*</span></label>
+                        <textarea class="form-control" id="description" name="description" rows="3" maxlength="255"
+                            required></textarea>
+                        <div class="invalid-feedback">O campo Descrição é obrigatório.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="col-form-label">Imagem <span class="text-danger">*</span></label>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+                        <div class="invalid-feedback">Por favor, envie uma imagem.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="url_video" class="col-form-label">Link do Curso <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="url_video" name="url_video" required
+                            maxlength="100">
+                        <div class="invalid-feedback">O campo Link do Curso é obrigatório.</div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                <button type="submit" class="btn btn-primary" id="create-course-button">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>

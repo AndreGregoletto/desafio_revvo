@@ -1,28 +1,10 @@
--- CREATE TABLE cursos (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     nome VARCHAR(255) NOT NULL,
---     descricao TEXT,
---     duracao INT NOT NULL,
---     preco DECIMAL(10, 2) NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
-
--- CREATE TABLE slideshow (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     imagem VARCHAR(255) NOT NULL,
---     titulo VARCHAR(255),
---     descricao TEXT,
---     link_botao VARCHAR(255),
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
 
 CREATE TABLE cursos (
       id INT AUTO_INCREMENT PRIMARY KEY
-    , imagem VARCHAR(255) NOT NULL
-    , titulo VARCHAR(255) NOT NULL
-    , descricao TEXT
+    , image VARCHAR(255) NOT NULL
+    , title VARCHAR(255) NOT NULL
+    , description TEXT
+    , url_video TEXT
     , created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     , updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
