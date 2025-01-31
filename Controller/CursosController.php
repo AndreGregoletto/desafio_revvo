@@ -9,7 +9,7 @@ class CursosController {
     }
 
     public function index() {
-        header("Location: http://desafio_revvo_3.test/View/");
+        header("Location: http://desafio_revvo.test/View/");
         exit(); 
     }
 
