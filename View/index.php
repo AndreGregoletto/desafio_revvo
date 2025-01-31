@@ -1,11 +1,9 @@
 <?php
-// require_once "../Model/Cursos.php";
 require_once "../Controller/CursosController.php";
 
 $aCourses = new CursosController();
 
 $courses = $aCourses->getCursos();
-// var_dump($courses);
 
 ?>
 <!DOCTYPE html>
@@ -71,13 +69,13 @@ $courses = $aCourses->getCursos();
         <div class="row g-4">
             <!-- Course Card -->
             <?php foreach ($courses as $course) { ?>
-                <div class="col-md-3">
-                    <div class="card">
-                        <img src="<?= $course['image'] ?>" class="img-fluid" alt="Curso" alt="Curso" >
-                        <div class="card-body">
+                <div class="col-md-3" >
+                    <div class="card" style="min-height: 400px !important;">
+                        <img src="<?= $course['image'] ?>" class="img-fluid" alt="Curso" style="max-height: 200px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column" style="height: 200px;">
                             <h5 class="card-title"> <?= $course['title'] ?> </h5>
                             <p class="card-text"> <?= $course['description'] ?> </p>
-                            <a href="<?= $course['url_video'] ?>" class="btn btn-success"> Ver Curso </a>
+                            <a href="<?= $course['url_video'] ?>" class="btn btn-success w-100 mt-auto"> Ver Curso </a>
                         </div>
                     </div>
                 </div>
@@ -104,21 +102,29 @@ $courses = $aCourses->getCursos();
         </div>
     </div>
 
-    <!-- Add Course Modal -->
-     <?php include_once "modalCourses.html"; ?>
+<?php include_once "modalCourses.html"; ?>
 
-    <!-- Footer -->
-    <footer class="bg-light text-center py-4">
-        <div class="container">
-            <p class="mb-1">Copyright 2017 - All rights reserved.</p>
-            <p>Contato: contato@leolearning.com | (21) 98765-3434</p>
-            <div>
-                <a href="#" class="text-secondary me-3">Twitter</a>
-                <a href="#" class="text-secondary me-3">Facebook</a>
-                <a href="#" class="text-secondary">LinkedIn</a>
-            </div>
+<footer class="bg-light py-4">
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <div class="d-flex flex-column text-start">
+            <h4 class="mb-1">LEO</h4>
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
-    </footer>
+
+        <div class="d-flex flex-column text-end">
+            <p class="mb-1">Contato:</p>
+            <p class="mb-0">contato@leolearning.com | (21) 98765-3434</p>
+        </div>
+
+        <div class="d-flex flex-column text-end">
+            <a href="#" class="text-secondary me-3">Twitter</a>
+            <a href="#" class="text-secondary me-3">Facebook</a>
+            <a href="#" class="text-secondary">LinkedIn</a>
+        </div>
+    </div>
+</footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

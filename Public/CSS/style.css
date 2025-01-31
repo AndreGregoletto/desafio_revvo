@@ -1,0 +1,18 @@
+footer .container {
+    padding: 0 50px;
+    /* Aumenta o espaçamento nas laterais */
+}
+
+footer .container div {
+    flex: 1;
+    /* Isso ajuda a garantir que os espaços se expandam igualmente */
+}
+
+footer .container .text-secondary {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+footer .container .text-secondary:hover {
+    text-decoration: underline;
+}
