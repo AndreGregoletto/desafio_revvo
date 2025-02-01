@@ -31,7 +31,6 @@ class CursosController {
 
             return $this->index();
         } catch (\Throwable $th) {
-            return $th->getMessage();
             return $this->index();
         }
     }
